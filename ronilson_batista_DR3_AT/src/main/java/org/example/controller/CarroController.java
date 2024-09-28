@@ -11,8 +11,14 @@ import static spark.Spark.put;
 
 public class CarroController {
 
-    private final CarroService service = new CarroService();
-    private final ObjectMapper objMapper = new ObjectMapper();
+    private CarroService service = new CarroService();
+    private ObjectMapper objMapper = new ObjectMapper();
+
+
+    public CarroController(CarroService carroService) {
+        this.service = carroService;
+        this.objMapper = new ObjectMapper();
+    }
 
     public void respostasRequisicoes() {
         get("/carros", (request, response) -> {
